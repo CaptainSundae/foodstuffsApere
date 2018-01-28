@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Food Stuffs Apere</title>
+	<link rel="stylesheet" type="text/css" href="css/foodstuff.css" >
+</head>
+	
+<body>
+		<!--START STREAM: First, we get the stream working-->
+			<!--Outer container, this allows us to overlay the image into a div-->
+			<div id="outerContainer">
+				<!--Here is a video element where everything lives. this is set to autoplay by default-->
+				<video id="videoElement" width="320" height="240" autoplay></video>
+				<!--This is the canvas, this should be hidden until we have taken the photo-->
+				<!--you need to do is to adjust the width and height, make sure you do the same to the video tag and the javascript. This is inefficient, but oh well-->
+				<canvas id="myCanvas" width="320" height="240"></canvas>
+			</div>
+				<button id="picButton" onclick="countDownTimer()" >Button</button>
+		<!--END STREAM-->
+		<h2 id="timer"></h2>
+
+
+
+
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script type="text/javascript" src="javascript/foodstuffs.js"></script>
+
+
+</html>
