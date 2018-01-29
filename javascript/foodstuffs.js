@@ -27,6 +27,7 @@ function displayImage(){
 
 		//call the function to send the image to the emotion API
 		faceProcess();
+		console.log("HELLO PLEASE WORK");
 }
 
 //FACE API START!!!!
@@ -82,6 +83,15 @@ This function was taken from stackoverflow
 				processData: false,
 			})
 			.success(function(data,status){
+				/*
+				This is how we isolate the json
+				jsonAttribute isolates the scores because there are several attributes before such as face rectangle. We don't care about those.
+				We just want the emotions. From here, just call jsonAttribute.anger or something, to get the float values of the emotions.
+				This is what will eventually become the input to our algorithm. Just need to :
+					*IMPROVE* 1. Figure out how to get the highest emotion efficiently
+				*/
+				var jsonAttribute=data[0].scores;
+				console.log("Anger: "+jsonAttribute.anger+"/n Happiness: "+jsonAttribute.happiness);
 				console.log(JSON.stringify(data));
 			})
 			.error(function (xhr, status, err) {
@@ -91,6 +101,40 @@ This function was taken from stackoverflow
 			
 		}
 //FACE API STOP!!!
+
+
+//WEATHER API: START using the OpenWeatherMap
+/*
+This is a simple function. Really simple ajax call. Url is already built, I just put my APPID for the api there and set the city to auckland.
+So just put the success condition as a way to break the weather down. I feel I need to parse it seperately first though.
+
+If I wanted to make this more scalable, I'll do the following
+	*IMPROVE* Put the APPID and City name as seperate variables so we can update it, depending on where in the world we use the app from
+*/
+
+function weatherAPI(){
+	$.ajax({
+		url: "http://api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=6f05d22387d36ccd9e3415ec80a8f911",
+		type: "GET"
+	})
+	.success(function(json){
+		/*
+		Isolate the json, just like in the face api. The json is structured quite differently, with the main array being on the second variable
+		to call parts, its the same concept, weatherJSON.description or weatherJSON.main
+		*/
+		var weatherJSON = json.weather[0];
+
+		console.log("THIS IS THE NEW FUNCTION");
+		console.log(json.weather[0].description +" its "+weatherJSON.main);
+		console.log("Finished parse");
+//		console.log(JSON.stringify(json));
+	})
+
+}
+
+//WEATHER API STOP!!!
+
+
 
 
 
@@ -107,6 +151,7 @@ We manipulate the system so that we run the functions we want, When we want, by 
 to a function run within the setTimeout() function call, named countReady .
 */
 function countDownTimer(){
+	weatherAPI();
 	setTimeout(count3,1000);
 	setTimeout(count2,2000);
 	setTimeout(count1,3000);
