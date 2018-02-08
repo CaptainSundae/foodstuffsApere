@@ -12,3 +12,44 @@
 	height:100%;
 }
 
+
+/*
+Every page
+*/
+
+#header{
+	text-align: center;
+}
+
+
+#textArea{
+	float:left;
+	padding-left: 150px;
+	font-family: sans-serif;
+	
+}
+
+h1{
+	color:red;
+}
+
+#pictureArea{
+	float: right;
+	padding-right: 100px;
+}
+
+
+.logo{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 50px;
+
+}
+
+
+
+
+#backImg{
+	transform:scaleX(-1);
+}

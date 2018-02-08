@@ -135,11 +135,6 @@ function weatherAPI(){
 //WEATHER API STOP!!!
 
 
-
-
-
-
-
 //TIMER START: Playing around with timers
 
 /*
