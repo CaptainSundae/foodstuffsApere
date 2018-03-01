@@ -16,14 +16,13 @@ var context=canvasElement.getContext("2d");
 var dURL="";
 //This takes the photo resizes it to the same size as the canvas(hence 0,0,w,h) then makes the video stream disapear so it looks like the canvas is overlaying the stream
 
-
+	
 
 //This function Draws the image and processes it into theAPI, this gets called once the timer reaches 1, so it is on runtime.
 function displayImage(){
 	    context.drawImage(video,0,0,320,240);
         //This is where we write the picture data and turn it into a dataURL so we can feed it to the API
 		dURL = canvasElement.toDataURL("image/jpeg",1);
-		video.style.display="none";
 
 		//call the function to send the image to the emotion API
 		faceProcess();
@@ -157,6 +156,7 @@ function countDownTimer(){
 }
 //countdown starting at 3
 function count3(){
+	video.style.display="block";
 	document.getElementById("timer").innerHTML="3";
 }
 function count2(){
@@ -175,7 +175,7 @@ function countReady(){
 //!!!!!!!!!!!BUG!!!!!!!!!! split second where nothing is showing, Not a big deal, kinda annoying.
 function returnVideo(){
 	canvasElement.style.display="none";
-	video.style.display="";
+	video.style.display="none";
 
 }
 

@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FRONT PAGE DESIGN</title>
+	<title>Food Stuffs Apere</title>
 	<link rel="stylesheet" type="text/css" href="css/foodstuffs.css" >
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" >
 </head>
 	
 <body>
+		<!--START STREAM: First, we get the stream working-->
+			<!--Outer container, this allows us to overlay the image into a div-->
 
 	<div id="header">
 		<img class="logo" src="Images/logoSolo.png">
 	</div>
-	<div id="bodyMain">
-		<h1 class="textHeads" id="mainText">Press Button For <b>Deals</b></h1>
-		<h2 class="textHeads">Then smile for the camera!</h2>
-		<div id="centerWrap">
-			
-			<button class="textHeads" id="startBtn" onclick="countDownTimer()">START</button>
 
-		</div>
-
-	</div>
-
-
+	
 			<div id="outerContainer">
 				<!--Here is a video element where everything lives. this is set to autoplay by default-->
 				<video id="videoElement" autoplay></video>
@@ -30,14 +21,12 @@
 				<!--you need to do is to adjust the width and height, make sure you do the same to the video tag and the javascript. This is inefficient, but oh well-->
 				<canvas id="myCanvas" width="320" height="240"></canvas>
 			</div>
+				<button id="picButton" onclick="countDownTimer()" >Button</button>
 		<!--END STREAM-->
 		<h2 id="timer"></h2>
 
 
 
-
-
-	<!--Hide til clicked-->
 
 </body>
 
