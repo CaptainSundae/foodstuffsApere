@@ -33,7 +33,6 @@ function displayImage(){
 
 		//call the function to send the image to the emotion API
 		faceProcess();
-		console.log("HELLO PLEASE WORK");
 }
 
 //FACE API START!!!!
@@ -76,7 +75,7 @@ This function was taken from stackoverflow
 				beforeSend: function(xhrObj){
 					// Request headers
                     xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
-                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "03aba829afff4f6eb7e9f736f365cdf6");
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "PUT KEY HERE");
 				},
 				//type is POST because we are sending info to the API
 				type: "POST",
@@ -107,16 +106,22 @@ This function was taken from stackoverflow
 
 			
 		}
+// Send blob to the backend
 
-//Function to rank the emotions
-
-function rankEmotions(){
-	if(emotion=="anger"){
-
-	}
-}
-
-
+		function sendDataToHeath(){
+			$.ajax({
+				url: "api.heathlogancampbell.com",
+				type: "POST",
+				data:makeblob(dURL),
+				processData:false
+			})
+			.success(function(json){
+				console.log("successfully sent to heath");
+			})
+			.error(function(xhr, status, err){
+				console.log(status+"it didn't work");
+			})
+		}
 
 //FACE API STOP!!!
 
@@ -132,7 +137,7 @@ If I wanted to make this more scalable, I'll do the following
 
 function weatherAPI(){
 	$.ajax({
-		url: "http://api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=6f05d22387d36ccd9e3415ec80a8f911",
+		url: "http://api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=PASTE KEY HERE",
 		type: "GET"
 	})
 	.success(function(json){
@@ -149,16 +154,7 @@ function weatherAPI(){
 	})
 
 }
-//Just translate the main weather to easily be used in a sentence. Main= Clear, Clounds, Rain
-function simplifyWeather(){
-	if(weather=="Clear"){
-		weather="Sunny";
-	}if(weather =="Clounds"){
-		weather="Cloudy";
-	}if(weather=="Rain"){
-		weather="Rainy";
-	}
-}
+
 
 
 //WEATHER API STOP!!!
@@ -203,6 +199,7 @@ function count1(){
 function countReady(){
 	//document.getElementById("timer").innerHTML="";
 	displayImage();
+	sendDataToHeath();
 	thirdPage.style.display="none";
 	firstPage.style.display="block";
 }
