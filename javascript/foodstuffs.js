@@ -1,8 +1,15 @@
-
-
+var weather="Default";
+var emotion="emoDefault";
+var emoDictionary=[];
 
 var video=document.getElementById('videoElement');
-	
+var firstPage=document.getElementById('firstPage');
+var secondPage=document.getElementById('secondPage');
+var thirdPage=document.getElementById('thirdPage');
+var weatherText=document.getElementById('weatherText');
+
+
+
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
 		navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){
 			videoElement.src=window.URL.createObjectURL(stream);
@@ -91,6 +98,7 @@ This function was taken from stackoverflow
 				*/
 				var jsonAttribute=data[0].scores;
 				console.log("Anger: "+jsonAttribute.anger+"/n Happiness: "+jsonAttribute.happiness);
+				console.log([jsonAttribute.anger,jsonAttribute.happiness].sort());
 				console.log(JSON.stringify(data));
 			})
 			.error(function (xhr, status, err) {
@@ -99,6 +107,17 @@ This function was taken from stackoverflow
 
 			
 		}
+
+//Function to rank the emotions
+
+function rankEmotions(){
+	if(emotion=="anger"){
+
+	}
+}
+
+
+
 //FACE API STOP!!!
 
 
@@ -130,6 +149,17 @@ function weatherAPI(){
 	})
 
 }
+//Just translate the main weather to easily be used in a sentence. Main= Clear, Clounds, Rain
+function simplifyWeather(){
+	if(weather=="Clear"){
+		weather="Sunny";
+	}if(weather =="Clounds"){
+		weather="Cloudy";
+	}if(weather=="Rain"){
+		weather="Rainy";
+	}
+}
+
 
 //WEATHER API STOP!!!
 
@@ -149,14 +179,17 @@ function countDownTimer(){
 	setTimeout(count3,1000);
 	setTimeout(count2,2000);
 	setTimeout(count1,3000);
-	setTimeout(countReady,4000);
-	setTimeout(returnVideo,5000);
+	setTimeout(returnVideo,3500);
+	//Put the third page
+	setTimeout(resultsPage,3700);
+	setTimeout(countReady,6000);
 
 	
 }
 //countdown starting at 3
 function count3(){
-	video.style.display="block";
+	firstPage.style.display="none";
+	secondPage.style.display="block";
 	document.getElementById("timer").innerHTML="3";
 }
 function count2(){
@@ -168,16 +201,20 @@ function count1(){
 }
 //after the counter hits 1, we turn the counter off so it doesn't display any text, then we run the displayImage() to show the results
 function countReady(){
-	document.getElementById("timer").innerHTML="";
+	//document.getElementById("timer").innerHTML="";
 	displayImage();
+	thirdPage.style.display="none";
+	firstPage.style.display="block";
 }
 
 //!!!!!!!!!!!BUG!!!!!!!!!! split second where nothing is showing, Not a big deal, kinda annoying.
 function returnVideo(){
+	secondPage.style.display="none";
 	canvasElement.style.display="none";
-	video.style.display="none";
-
 }
 
+function resultsPage(){
+	thirdPage.style.display="block";
+}
 //TIMER END
 

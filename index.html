@@ -7,38 +7,48 @@
 </head>
 	
 <body>
+	<div class="container">
 
-	<div id="header">
+	<div id="LogoHead" class="row">
 		<img class="logo" src="Images/logoSolo.png">
 	</div>
-	<div id="bodyMain">
+
+
+	<div id="firstPage" class="row" >
 		<h1 class="textHeads" id="mainText">Press Button For <b>Deals</b></h1>
 		<h2 class="textHeads">Then smile for the camera!</h2>
 		<div id="centerWrap">
 			
 			<button class="textHeads" id="startBtn" onclick="countDownTimer()">START</button>
-
 		</div>
-
 	</div>
 
-
-			<div id="outerContainer">
+			<div id="secondPage" class="row">
+				<h2 class="textHeads" id="timer"></h2>
 				<!--Here is a video element where everything lives. this is set to autoplay by default-->
 				<video id="videoElement" autoplay></video>
 				<!--This is the canvas, this should be hidden until we have taken the photo-->
 				<!--you need to do is to adjust the width and height, make sure you do the same to the video tag and the javascript. This is inefficient, but oh well-->
+				
+
 				<canvas id="myCanvas" width="320" height="240"></canvas>
+				
 			</div>
 		<!--END STREAM-->
-		<h2 id="timer"></h2>
-
-
-
-
-
 	<!--Hide til clicked-->
 
+<div id="thirdPage" class="row">
+	<div class="col-sm-6">
+		<img id="product" src="Images/IceCream.jpg">
+	</div>
+	<div class="col-sm-6">
+		<h1 class="textHeads">Tip Top Ice Cream 2L</h1>
+		<h1 class="textHeads">4.89 ea</h1>
+		<h3 class="textHeads">Limited to 6 Assorted <br/> Expires</h3>
+		<p id="weatherText"></p>
+	</div>
+</div>
+</div>
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>

@@ -57,14 +57,14 @@ Every page
 
 
 #mainText{
-		font-family: Century Gothic;
+		font-family: Arial;
 		font-size: 60px;
 		color: white;
 		text-align: center;
 }
 
 .textHeads{
-		font-family: Century Gothic;
+		font-family: Arial;
 		color: white;
 		text-align: center;
 }
@@ -92,7 +92,7 @@ Every page
 }
 
 #videoElement{
-	display: none;
+	display: block;
 	width: 50%;
 	height: 420px;
 }
@@ -101,4 +101,21 @@ Every page
 	width: 50%;
 	height: 420px;
 	display: none;
+}
+
+/*
+This area just shows when the pages apear and disapear
+*/
+
+#secondPage{
+	display: none;
+}
+
+#thirdPage{
+	display: none;
+}
+
+#product{
+	width:500px;
+	height: 500px;
 }
