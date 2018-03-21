@@ -8,7 +8,11 @@ var secondPage=document.getElementById('secondPage');
 var thirdPage=document.getElementById('thirdPage');
 var weatherText=document.getElementById('weatherText');
 
-
+var prodSentence=document.getElementById('prodSentence');
+var prodName=document.getElementById('prodName');
+var prodPrice=document.getElementById('prodPrice');
+var prodNotes=document.getElementById('prodNotes');
+var prodImage=document.getElementById('product');
 
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
 		navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){
@@ -75,7 +79,7 @@ This function was taken from stackoverflow
 				beforeSend: function(xhrObj){
 					// Request headers
                     xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
-                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "PUT KEY HERE");
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "03aba829afff4f6eb7e9f736f365cdf6");
 				},
 				//type is POST because we are sending info to the API
 				type: "POST",
@@ -99,6 +103,48 @@ This function was taken from stackoverflow
 				console.log("Anger: "+jsonAttribute.anger+"/n Happiness: "+jsonAttribute.happiness);
 				console.log([jsonAttribute.anger,jsonAttribute.happiness].sort());
 				console.log(JSON.stringify(data));
+				var emoFace=[[jsonAttribute.anger,'Anger'],[jsonAttribute.happiness,'Happiness'],[jsonAttribute.neutral*0.0007,'Neutral expression'],[jsonAttribute.sadness,'Sadness'],[jsonAttribute.surprise,'Surprise']].sort(function(a,b) {    return a[0] > b[0] ? 1 : -1;}).reverse();
+                console.log(emoFace);
+                console.log(emoFace[0][1]);
+                emotion=emoFace[0][1];
+   
+
+
+                var sentence = "Due to your " +emotion+" on this "+weather+" day. We think you'll enjoy this!";
+			    console.log(sentence);
+			    prodSentence.innerHTML=sentence;
+			    console.log('after prodSentence');
+
+			    //NOW WE CHANGE THE RESULT BASED ON THE EMOTION
+			    if(emotion=='Happiness'){
+					prodImage.src="Images/banana.png";
+					prodName.innerHTML='Dole Bobby Banana';
+					prodPrice.innerHTML='$1.99 ea';
+					prodNotes.innerHTML='expires 25/03/18';
+				}if(emotion=='Anger'){
+					prodImage.src="Images/timtam.png";
+					prodName.innerHTML="Arnott's Original Tim Tam";
+					prodPrice.innerHTML='2 for $5';
+					prodNotes.innerHTML='expires 25/03/18';
+				}if(emotion=='Sadness'){
+					prodImage.src="Images/cokecan.png";
+					prodName.innerHTML="Coca-cola 330ml 8 pack";
+					prodPrice.innerHTML='3 for $20';
+					prodNotes.innerHTML='expires 25/03/18';
+				}if(emotion=='Surprise'){
+					prodImage.src="Images/pineappleLumps.png";
+					prodName.innerHTML="Pascall's Pineapple Lumps";
+					prodPrice.innerHTML='$2.49 ea';
+					prodNotes.innerHTML='expires 25/03/18';
+				}if(emotion=='Surprise'){
+					prodImage.src="Images/icecream.png";
+					prodName.innerHTML="Tip Top Hokey Pokey Ice Cream";
+					prodPrice.innerHTML='$4.89 ea';
+					prodNotes.innerHTML='expires 25/03/18';
+				}
+				
+
+
 			})
 			.error(function (xhr, status, err) {
 				console.log(status);
@@ -119,7 +165,7 @@ This function was taken from stackoverflow
 				console.log("successfully sent to heath");
 			})
 			.error(function(xhr, status, err){
-				console.log(status+"it didn't work");
+				console.log(status+" it didn't work");
 			})
 		}
 
@@ -137,7 +183,7 @@ If I wanted to make this more scalable, I'll do the following
 
 function weatherAPI(){
 	$.ajax({
-		url: "http://api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=PASTE KEY HERE",
+		url: "http://api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=6f05d22387d36ccd9e3415ec80a8f911",
 		type: "GET"
 	})
 	.success(function(json){
@@ -146,6 +192,15 @@ function weatherAPI(){
 		to call parts, its the same concept, weatherJSON.description or weatherJSON.main
 		*/
 		var weatherJSON = json.weather[0];
+
+            if(weatherJSON.main=="Clear"){
+                weather="Sunny";
+            }if(weatherJSON.main =="Clouds"){
+                weather="Cloudy";
+            }if(weatherJSON.main=="Rain"){
+                weather="Rainy";
+            }
+        console.log(weather);
 
 		console.log("THIS IS THE NEW FUNCTION");
 		console.log(json.weather[0].description +" its "+weatherJSON.main);
@@ -178,7 +233,7 @@ function countDownTimer(){
 	setTimeout(returnVideo,3500);
 	//Put the third page
 	setTimeout(resultsPage,3700);
-	setTimeout(countReady,6000);
+	setTimeout(countReady,10000);
 
 	
 }
@@ -198,7 +253,7 @@ function count1(){
 //after the counter hits 1, we turn the counter off so it doesn't display any text, then we run the displayImage() to show the results
 function countReady(){
 	//document.getElementById("timer").innerHTML="";
-	displayImage();
+
 	sendDataToHeath();
 	thirdPage.style.display="none";
 	firstPage.style.display="block";
@@ -211,7 +266,18 @@ function returnVideo(){
 }
 
 function resultsPage(){
+	displayImage();
 	thirdPage.style.display="block";
 }
 //TIMER END
 
+if(emotion==Happiness){
+	prodImage.src="../banana.png";
+	prodName.innerHTML='Dole Bobby Banana';
+	prodPrice.innerHTML='1.99 ea';
+	prodNotes.innerHTML='expires 25/03/18';
+}
+var prodName=document.getElementById('prodName');
+var prodPrice=document.getElementById('prodPrice');
+var prodNotes=document.getElementById('prodNotes');
+var prodImage=document.getElementById('product');
