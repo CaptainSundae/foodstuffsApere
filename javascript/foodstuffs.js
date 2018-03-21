@@ -281,3 +281,13 @@ var prodName=document.getElementById('prodName');
 var prodPrice=document.getElementById('prodPrice');
 var prodNotes=document.getElementById('prodNotes');
 var prodImage=document.getElementById('product');
+
+
+//Connection to the button over websockets
+//Should only trigger when button is clicked!
+var ws = new WebSocket("ws://127.0.0.1:25565/")
+ws.onmessage = function(event) 
+{
+	//event.data will be 'Click'
+	
+};
