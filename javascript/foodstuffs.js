@@ -271,12 +271,7 @@ function resultsPage(){
 }
 //TIMER END
 
-if(emotion==Happiness){
-	prodImage.src="../banana.png";
-	prodName.innerHTML='Dole Bobby Banana';
-	prodPrice.innerHTML='1.99 ea';
-	prodNotes.innerHTML='expires 25/03/18';
-}
+
 var prodName=document.getElementById('prodName');
 var prodPrice=document.getElementById('prodPrice');
 var prodNotes=document.getElementById('prodNotes');
@@ -285,9 +280,30 @@ var prodImage=document.getElementById('product');
 
 //Connection to the button over websockets
 //Should only trigger when button is clicked!
-var ws = new WebSocket("ws://127.0.0.1:25565/")
-ws.onmessage = function(event) 
+var ws = new WebSocket("ws://127.0.0.1:25565/");
+ws.onmessage = function(event)
 {
 	//event.data will be 'Click'
+	countDownTimer();
 	
 };
+
+var slideIndex = 1;
+showDivs(slideIndex);
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.transform = "scale(1.0)";  
+  }
+
+  x[slideIndex-1].style.transform = "scale(1.5)";
+  console.log(x[slideIndex-1].id);
+  
+}
