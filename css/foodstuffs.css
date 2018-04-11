@@ -1,5 +1,5 @@
 body{
-	background-image: url("backgroundGreen1080.jpg");
+	background-image: url("backgroundGrey.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%, 100%;
 }
@@ -115,7 +115,20 @@ This area just shows when the pages apear and disapear
 	display: none;
 }
 
+#dietPage{
+	display:none;
+}
+#servingPage{
+	display:none;
+}
+
 #product{
 	width:500px;
 	height: 500px;
+}
+
+#emoji img{
+	padding: 20px;
+	height:100px;
+	width: 100px;
 }

@@ -1,6 +1,7 @@
 var weather="Default";
 var emotion="emoDefault";
 var emoDictionary=[];
+var diet="";
 
 var video=document.getElementById('videoElement');
 var firstPage=document.getElementById('firstPage');
@@ -13,6 +14,25 @@ var prodName=document.getElementById('prodName');
 var prodPrice=document.getElementById('prodPrice');
 var prodNotes=document.getElementById('prodNotes');
 var prodImage=document.getElementById('product');
+
+
+var imgHappy=document.getElementById('happyEmo');
+var imgAngry=document.getElementById('angryEmo');
+var imgSad=document.getElementById('sadEmo');
+var imgSurprise=document.getElementById('surpriseEmo');
+var imgNeutral=document.getElementById('neutralEmo');
+
+var dietPage=document.getElementById('dietPage');
+
+
+var servingPage=document.getElementById('servingPage');
+var servings=4;
+var servingSize=document.getElementById('servingSize');
+servingSize.innerHTML=servings;
+var addSize=document.getElementById('add');
+var minusSize=document.getElementById('minus');
+
+
 
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
 		navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){
@@ -136,12 +156,13 @@ This function was taken from stackoverflow
 					prodName.innerHTML="Pascall's Pineapple Lumps";
 					prodPrice.innerHTML='$2.49 ea';
 					prodNotes.innerHTML='expires 25/03/18';
-				}if(emotion=='Surprise'){
+				}if(emotion=='Neutral expression'){
 					prodImage.src="Images/icecream.png";
 					prodName.innerHTML="Tip Top Hokey Pokey Ice Cream";
 					prodPrice.innerHTML='$4.89 ea';
 					prodNotes.innerHTML='expires 25/03/18';
 				}
+				emoji();
 				
 
 
@@ -151,22 +172,6 @@ This function was taken from stackoverflow
             });
 
 			
-		}
-// Send blob to the backend
-
-		function sendDataToHeath(){
-			$.ajax({
-				url: "api.heathlogancampbell.com",
-				type: "POST",
-				data:makeblob(dURL),
-				processData:false
-			})
-			.success(function(json){
-				console.log("successfully sent to heath");
-			})
-			.error(function(xhr, status, err){
-				console.log(status+" it didn't work");
-			})
 		}
 
 //FACE API STOP!!!
@@ -232,11 +237,27 @@ function countDownTimer(){
 	setTimeout(count1,3000);
 	setTimeout(returnVideo,3500);
 	//Put the third page
+/*
 	setTimeout(resultsPage,3700);
 	setTimeout(countReady,10000);
-
+*/
 	
 }
+
+function servingSettings(){
+	servingPage.style.display="none";
+	dietPageDisplay(); 
+
+}
+
+function dietSettings(){
+	dietPage.style.display="none";
+	setTimeout(resultsPage,1000);
+	setTimeout(countReady,5000);
+}
+
+
+
 //countdown starting at 3
 function count3(){
 	firstPage.style.display="none";
@@ -261,23 +282,137 @@ function countReady(){
 
 //!!!!!!!!!!!BUG!!!!!!!!!! split second where nothing is showing, Not a big deal, kinda annoying.
 function returnVideo(){
+
 	secondPage.style.display="none";
 	canvasElement.style.display="none";
+	servingPageDisplay();
 }
+
+function dietPageDisplay(){
+	dietPage.style.display="block";
+}
+
+function servingPageDisplay(){
+	servingPage.style.display="block";
+}
+
+
 
 function resultsPage(){
 	displayImage();
+	emoji();
 	thirdPage.style.display="block";
 }
+
+function emoji(){
+	if (emotion=="Happiness"){
+		imgHappy.style.transform="scale(1.5)";
+		imgAngry.style.transform="scale(1.0)";
+		imgSad.style.transform="scale(1.0)";
+		imgSurprise.style.transform="scale(1.0)";
+		imgNeutral.style.transform="scale(1.0)";
+	}if (emotion=="Anger"){
+		imgHappy.style.transform="scale(1.0)";
+		imgAngry.style.transform="scale(1.5)";
+		imgSad.style.transform="scale(1.0)";
+		imgSurprise.style.transform="scale(1.0)";
+		imgNeutral.style.transform="scale(1.0)";
+	}if (emotion=="Sadness"){
+		imgHappy.style.transform="scale(1.0)";
+		imgAngry.style.transform="scale(1.0)";
+		imgSad.style.transform="scale(1.5)";
+		imgSurprise.style.transform="scale(1.0)";
+		imgNeutral.style.transform="scale(1.0)";
+	}if (emotion=="Surprise"){
+		imgHappy.style.transform="scale(1.0)";
+		imgAngry.style.transform="scale(1.0)";
+		imgSad.style.transform="scale(1.0)";
+		imgSurprise.style.transform="scale(1.5)";
+		imgNeutral.style.transform="scale(1.0)";
+	}if (emotion=="Neutral"){
+		imgHappy.style.transform="scale(1.0)";
+		imgAngry.style.transform="scale(1.0)";
+		imgSad.style.transform="scale(1.0)";
+		imgSurprise.style.transform="scale(1.0)";
+		imgNeutral.style.transform="scale(1.5)";
+	}
+}
+
 //TIMER END
 
-if(emotion==Happiness){
-	prodImage.src="../banana.png";
-	prodName.innerHTML='Dole Bobby Banana';
-	prodPrice.innerHTML='1.99 ea';
-	prodNotes.innerHTML='expires 25/03/18';
-}
+
 var prodName=document.getElementById('prodName');
 var prodPrice=document.getElementById('prodPrice');
 var prodNotes=document.getElementById('prodNotes');
 var prodImage=document.getElementById('product');
+
+
+var slideIndex = 1;
+showDivs(slideIndex);
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.transform = "scale(1.0)";  
+  }
+
+  x[slideIndex-1].style.transform = "scale(1.5)";
+  diet=x[slideIndex-1].id;
+  console.log(diet);
+  
+}
+
+
+function add(){
+	servings+=1;
+	servingSize.innerHTML=servings;
+}
+function minus(){
+	if(servings<=1){
+		servings=1;
+	}else{
+		servings-=1;	
+	}
+	servingSize.innerHTML=servings;
+}
+
+
+
+
+//HEATH's STUFF
+
+
+
+// Send blob to the backend
+
+		function sendDataToHeath(){
+			$.ajax({
+				url: "api.heathlogancampbell.com",
+				type: "POST",
+				data:makeblob(dURL),
+				processData:false
+			})
+			.success(function(json){
+				console.log("successfully sent to heath");
+			})
+			.error(function(xhr, status, err){
+				console.log(status+" it didn't work");
+			})
+		}
+
+
+//Connection to the button over websockets
+//Should only trigger when button is clicked!
+var ws = new WebSocket("ws://127.0.0.1:25565/");
+ws.onmessage = function(event)
+{
+	//event.data will be 'Click'
+	countDownTimer();
+	
+};

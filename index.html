@@ -10,8 +10,9 @@
 	<div class="container">
 
 	<div id="LogoHead" class="row">
-		<img class="logo" src="Images/nw.png">
+		<img class="logo" src="Images/logo.png">
 	</div>
+
 
 
 	<div id="firstPage" class="row" >
@@ -36,19 +37,55 @@
 			</div>
 		<!--END STREAM-->
 	<!--Hide til clicked-->
-
 <div id="thirdPage" class="row">
+
+<div class="row">
 	<h2 id="prodSentence" class="textHeads"></h2>
+	
 	<div class="col-sm-6">
 		<img id="product">
 	</div>
+
 	<div class="col-sm-6">
 		<h1 id="prodName" class="textHeads"></h1>
 		<h1 id="prodPrice" class="textHeads"></h1>
 		<h3 id="prodNotes" class="textHeads"></h3>
 		<p id="weatherText"></p>
 	</div>
+
+
 </div>
+<div id="emoji" class="row" style="text-align: center;">
+  		<img id="happyEmo" src="Images/happy.png">
+  		<img id="angryEmo" src="Images/angry.png">
+  		<img id="sadEmo" src="Images/sad.png">
+  		<img id="surpriseEmo" src="Images/surprise.png">
+  		<img id="neutralEmo" src="Images/neutral.png">
+ </div>
+
+</div>
+
+<div id="dietPage" class="row">
+  <img class="mySlides" id="vegan" src="Images/vegan.png">
+  <img class="mySlides" id="gluten" src="Images/gluten.png">
+  <img class="mySlides" id="vegetarian" src="Images/vegetarian.png">
+  <img class="mySlides" id="dairy" src="Images/dairy.png">
+
+  <button onclick="plusDivs(-1)">&#10094;</button>
+  <button onclick="plusDivs(1)">&#10095;</button>  
+
+  <button onclick="dietSettings()">GO</button>
+</div>
+<div id="servingPage" class="row">
+	<h1 id="servingSize" class="textHeads"></h1>
+	<button id="add" onclick="minus()">-</button>
+	<button id="minus" onclick="add()">+</button>
+
+	<button onclick="servingSettings()">GO!!!!</button>
+</div>
+
+
+
 </div>
 </body>
 
