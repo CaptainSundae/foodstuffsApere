@@ -15,6 +15,7 @@ var prodPrice=document.getElementById('prodPrice');
 var prodNotes=document.getElementById('prodNotes');
 var prodImage=document.getElementById('product');
 
+var emojiPage=document.getElementById("emojiPage");
 
 var imgHappy=document.getElementById('happyEmo');
 var imgAngry=document.getElementById('angryEmo');
@@ -33,6 +34,7 @@ var addSize=document.getElementById('add');
 var minusSize=document.getElementById('minus');
 
 
+var errorPage=document.getElementById('errorPage');
 
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
 		navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){
@@ -119,6 +121,7 @@ This function was taken from stackoverflow
 				This is what will eventually become the input to our algorithm. Just need to :
 					*IMPROVE* 1. Figure out how to get the highest emotion efficiently
 				*/
+				try{
 				var jsonAttribute=data[0].scores;
 				console.log("Anger: "+jsonAttribute.anger+"/n Happiness: "+jsonAttribute.happiness);
 				console.log([jsonAttribute.anger,jsonAttribute.happiness].sort());
@@ -135,6 +138,7 @@ This function was taken from stackoverflow
 			    prodSentence.innerHTML=sentence;
 			    console.log('after prodSentence');
 
+			   /*
 			    //NOW WE CHANGE THE RESULT BASED ON THE EMOTION
 			    if(emotion=='Happiness'){
 					prodImage.src="Images/banana.png";
@@ -162,13 +166,108 @@ This function was taken from stackoverflow
 					prodPrice.innerHTML='$4.89 ea';
 					prodNotes.innerHTML='expires 25/03/18';
 				}
-				emoji();
-				
+			*/
+//START HARD CODING RESULTS
+	var fiftyFifty=Math.floor(Math.random()*2);
+	prodNotes.innerHTML='For notes on how to make this recipe, please visit our website or follow the instructions on the printout below.';
+
+	if(diet=="vegetarian"){
+		console.log(diet=="vegetarian");
+		if(fiftyFifty==1){
+			prodImage.src="Images/recipe/ThaiMushroomSalad.jpg";
+			prodName.innerHTML='Thai Mushroom Salad';
+		}if(fiftyFifty==0){
+			prodImage.src="Images/recipe/MediterraneanPumpkinAndBasiCouscous.jpg"
+			prodName.innerHTML="Mediterranean Pumpkin & Basi Couscous"
+		}
+		console.log(fiftyFifty);
+				}if(diet=="dairy"){
+
+		if(fiftyFifty==1){
+			prodImage.src="Images/recipe/Soy&GingerSalmonWithLemon&HerbCouscous.jpg";
+			prodName.innerHTML='Soy & Ginger Salmon With Lemon & Herb Couscous';
+		}if(fiftyFifty==0){
+			prodImage.src="Images/recipe/Tofu&MushroomSanChoyBau.jpg"
+			prodName.innerHTML="Tofu & Mushroom San Choy Bau"
+		}
+	}
+	if(diet=="noRequirements"){
+		if(emotion=="Happiness"){
+			if(fiftyFifty==1){
+				prodImage.src="Images/recipe/TeriyakiChicken&CapsicumBowl.jpg";
+				prodName.innerHTML='Teriyaki Chicken & Capsicum Bowl';
+			}if(fiftyFifty==0){
+				prodImage.src="Images/recipe/BeefSirloinOnSpicedLentils&Swede.jpg"
+				prodName.innerHTML="Beef Sirloin On Spiced Lentils & Swede"
+			}
+		}
+
+		if(emotion=="Anger"){
+			if(fiftyFifty==1){
+				prodImage.src="Images/recipe/Beef&BeanQuesadillas.jpg";
+				prodName.innerHTML='Beef & Bean Quesadillas';
+			}if(fiftyFifty==0){
+				prodImage.src="Images/recipe/Ginger&CaramelSalmonwithAsianGreens.jpg"
+				prodName.innerHTML="Ginger & Caramel Salmon with Asian Greens"
+			}
+		}
+
+		if(emotion=="Sadness"){
+			if(fiftyFifty==1){
+				prodImage.src="Images/recipe/HarissaLambSkewers&TangyPotatoSalad.jpg";
+				prodName.innerHTML='Harissa Lamb Skewers & Tangy Potato Salad';
+			}if(fiftyFifty==0){
+				prodImage.src="Images/recipe/BBQChickenSkewers,KumaraWedges&Cos.jpg"
+				prodName.innerHTML="BBQ Chicken Skewers, Kumara Wedges & Cos"
+			}
+		}
+		if(emotion=="Surprise"){
+			if(fiftyFifty==1){
+				prodImage.src="Images/recipe/ChilliJamLamb&MintedBroccoli.jpg";
+				prodName.innerHTML='Chilli Jam Lamb & Minted Broccoli';
+			}if(fiftyFifty==0){
+				prodImage.src="Images/recipe/GreekStylePorkFeta&TomatoBraise.jpg"
+				prodName.innerHTML="Greek Style Pork Feta & Tomato Braise"
+			}
+		}
+
+		if(emotion=="Neutral"){
+			if(fiftyFifty==1){
+				prodImage.src="Images/recipe/Thyme&ParmesanSpaghettiBolognese.jpg";
+				prodName.innerHTML='Thyme & Parmesan Spaghetti Bolognese';
+			}if(fiftyFifty==0){
+				prodImage.src="Images/recipe/CreamyChicken&GreenMedley.jpg"
+				prodName.innerHTML="Creamy Chicken & Green Medley"
+			}
+		}
+	}
+	
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//END HARD CODING STUFF
+
+
+					emoji();
+
+				}catch(TypeError){
+					thirdPage.style.display="none";
+					errorPage.style.display="block";
+				}
 			})
 			.error(function (xhr, status, err) {
-				console.log(status);
+				console.log("EMOTION WENT WRONG");
             });
 
 			
@@ -244,22 +343,11 @@ function countDownTimer(){
 	
 }
 
-function servingSettings(){
-	servingPage.style.display="none";
-	dietPageDisplay(); 
-
-}
-
-function dietSettings(){
-	dietPage.style.display="none";
-	setTimeout(resultsPage,1000);
-	setTimeout(countReady,5000);
-}
-
 
 
 //countdown starting at 3
 function count3(){
+	errorPage.style.display="none";
 	firstPage.style.display="none";
 	secondPage.style.display="block";
 	document.getElementById("timer").innerHTML="3";
@@ -271,10 +359,25 @@ function count1(){
 	document.getElementById("timer").innerHTML="1";
 	
 }
+function servingSettings(){
+	servingPage.style.display="none";
+	setTimeout(resultsPage,1000);
+	setTimeout(countReady,10000);
+	
+}
+
+function dietSettings(){
+	dietPage.style.display="none";
+	servingPageDisplay(); 
+
+}
+
+
 //after the counter hits 1, we turn the counter off so it doesn't display any text, then we run the displayImage() to show the results
 function countReady(){
 	//document.getElementById("timer").innerHTML="";
 
+	errorPage.style.display="none";
 	sendDataToHeath();
 	thirdPage.style.display="none";
 	firstPage.style.display="block";
@@ -285,14 +388,17 @@ function returnVideo(){
 
 	secondPage.style.display="none";
 	canvasElement.style.display="none";
-	servingPageDisplay();
+	dietPageDisplay();
 }
 
 function dietPageDisplay(){
 	dietPage.style.display="block";
+
 }
 
 function servingPageDisplay(){
+	
+
 	servingPage.style.display="block";
 }
 
@@ -300,7 +406,6 @@ function servingPageDisplay(){
 
 function resultsPage(){
 	displayImage();
-	emoji();
 	thirdPage.style.display="block";
 }
 
@@ -370,7 +475,12 @@ function showDivs(n) {
 
 
 function add(){
-	servings+=1;
+	if(servings<12){
+		servings+=1;	
+	}else{
+		servings=12;
+	}
+
 	servingSize.innerHTML=servings;
 }
 function minus(){

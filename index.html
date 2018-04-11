@@ -15,19 +15,29 @@
 
 
 
-	<div id="firstPage" class="row" >
-		<h1 class="textHeads" id="mainText">Press Button For <b>Deals</b></h1>
-		<h2 class="textHeads">Then smile for the camera!</h2>
+	<div id="firstPage" >
+		<h1 class="textHeads" id="mainText">Press Button For <b>Meal Ideas</b></h1>
+		<h2 class="textHeads">Then show the camera how you feel!</h2>
 		<div id="centerWrap">
 			
 			<button class="textHeads" id="startBtn" onclick="countDownTimer()">START</button>
 		</div>
+		<div id="instructions" class="row">
+			<img src="Images/logoLeft.png">
+			<img src="Images/logoSelect.png">
+			<img src="Images/logoRight.png">
+		</div>
 	</div>
 
+
 			<div id="secondPage" class="row">
-				<h2 class="textHeads" id="timer"></h2>
-				<!--Here is a video element where everything lives. this is set to autoplay by default-->
-				<video id="videoElement" autoplay></video>
+				<div class=row>
+					<h2 class="textHeads" id="timer"></h2>
+				</div>
+								<!--Here is a video element where everything lives. this is set to autoplay by default-->
+				<div class="row">				
+					<video id="videoElement" autoplay></video>
+				</div>
 				<!--This is the canvas, this should be hidden until we have taken the photo-->
 				<!--you need to do is to adjust the width and height, make sure you do the same to the video tag and the javascript. This is inefficient, but oh well-->
 				
@@ -42,48 +52,70 @@
 <div class="row">
 	<h2 id="prodSentence" class="textHeads"></h2>
 	
-	<div class="col-sm-6">
-		<img id="product">
+		<div class="col-sm-6">
+			<img id="product">
+		</div>
+
+		<div class="col-sm-6">
+			<h1 id="prodName" class="textHeads"></h1>
+			<h1 id="prodPrice" class="textHeads"></h1>
+			<h3 id="prodNotes" class="textHeads"></h3>
+			<p id="weatherText"></p>
+		</div>
+
+
 	</div>
-
-	<div class="col-sm-6">
-		<h1 id="prodName" class="textHeads"></h1>
-		<h1 id="prodPrice" class="textHeads"></h1>
-		<h3 id="prodNotes" class="textHeads"></h3>
-		<p id="weatherText"></p>
-	</div>
-
-
-</div>
-<div id="emoji" class="row" style="text-align: center;">
-  		<img id="happyEmo" src="Images/happy.png">
-  		<img id="angryEmo" src="Images/angry.png">
-  		<img id="sadEmo" src="Images/sad.png">
-  		<img id="surpriseEmo" src="Images/surprise.png">
-  		<img id="neutralEmo" src="Images/neutral.png">
- </div>
+	<div id="emojiPage" class="row" style="text-align: center;">
+	  		<img id="happyEmo" src="Images/happy.png">
+	  		<img id="angryEmo" src="Images/angry.png">
+	  		<img id="sadEmo" src="Images/sad.png">
+	  		<img id="surpriseEmo" src="Images/surprise.png">
+	  		<img id="neutralEmo" src="Images/neutral.png">
+	 </div>
 
 </div>
 
 <div id="dietPage" class="row">
-  <img class="mySlides" id="vegan" src="Images/vegan.png">
-  <img class="mySlides" id="gluten" src="Images/gluten.png">
-  <img class="mySlides" id="vegetarian" src="Images/vegetarian.png">
-  <img class="mySlides" id="dairy" src="Images/dairy.png">
+	<div id="slides">
+	<button class="btnSettings" onclick="plusDivs(-1)">&#10094;</button>
+	<img class="mySlides" id="vegetarian" src="Images/veg.png">
+	<img class="mySlides" id="dairy" src="Images/dairyFree.png">
+	<img class="mySlides" id="noRequirements" src="Images/noRequirements.png">
+	<button class="btnSettings" onclick="plusDivs(1)">&#10095;</button>  
+	</div>
+		 
+	 <button class="btnSettings" onclick="dietSettings()">GO</button>
 
-  <button onclick="plusDivs(-1)">&#10094;</button>
-  <button onclick="plusDivs(1)">&#10095;</button>  
-
-  <button onclick="dietSettings()">GO</button>
+  		<div id="instructions" class="row">
+			<img src="Images/logoLeft.png">
+			<img src="Images/logoSelect.png">
+			<img src="Images/logoRight.png">
+		</div>
 </div>
+
+
 <div id="servingPage" class="row">
-	<h1 id="servingSize" class="textHeads"></h1>
-	<button id="add" onclick="minus()">-</button>
-	<button id="minus" onclick="add()">+</button>
+	<div id="mid">
+		<h1 class="textHeads">Please Select the serving size:</h1>
+		<button class="textHeads" id="add" onclick="minus()">-</button>
+		<h2 id="servingSize" class="textHeads"></h2>
+		<button class="textHeads" id="minus" onclick="add()">+</button>
+		
+	
+	</div>
+	<div id="mid">
+		<button class="textHeads" id="startBtn" onclick="servingSettings()">SELECT</button>
+	</div>
+			<div id="instructions" class="row">
+			<img src="Images/logoLeft.png">
+			<img src="Images/logoSelect.png">
+			<img src="Images/logoRight.png">
+		</div>
+	</div>
 
-	<button onclick="servingSettings()">GO!!!!</button>
+<div id="errorPage">
+	<h1 class="textHeads">Your Image was obscured, please try again.</h1>
 </div>
-
 
 
 </div>
