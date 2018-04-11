@@ -304,6 +304,7 @@ function resultsPage(){
 	thirdPage.style.display="block";
 }
 
+<<<<<<< HEAD
 function emoji(){
 	if (emotion=="Happiness"){
 		imgHappy.style.transform="scale(1.5)";
@@ -340,6 +341,8 @@ function emoji(){
 
 //TIMER END
 
+=======
+>>>>>>> origin/master
 
 var prodName=document.getElementById('prodName');
 var prodPrice=document.getElementById('prodPrice');
@@ -347,6 +350,19 @@ var prodNotes=document.getElementById('prodNotes');
 var prodImage=document.getElementById('product');
 
 
+<<<<<<< HEAD
+=======
+//Connection to the button over websockets
+//Should only trigger when button is clicked!
+var ws = new WebSocket("ws://127.0.0.1:25565/");
+ws.onmessage = function(event)
+{
+	//event.data will be 'Click'
+	countDownTimer();
+	
+};
+
+>>>>>>> origin/master
 var slideIndex = 1;
 showDivs(slideIndex);
 function plusDivs(n) {
@@ -363,6 +379,7 @@ function showDivs(n) {
   }
 
   x[slideIndex-1].style.transform = "scale(1.5)";
+<<<<<<< HEAD
   diet=x[slideIndex-1].id;
   console.log(diet);
   
@@ -416,3 +433,8 @@ ws.onmessage = function(event)
 	countDownTimer();
 	
 };
+=======
+  console.log(x[slideIndex-1].id);
+  
+}
+>>>>>>> origin/master
