@@ -419,8 +419,8 @@ function resultsPage(){
 
 
 function printRecipe(){
-	setTimeout(scan(),1000);
-	setTimeout(quit, 3000);
+	setTimeout(scan,1000);
+	setTimeout(exitScan, 7000);
 	}
 
 
@@ -431,7 +431,11 @@ function scan(){
 
 function quit(){
 	printPage.style.display="none";
-	scanPage.style.display="none;"
+	firstPage.style.display="block";
+}
+
+function exitScan(){
+	scanPage.style.display="none";
 	firstPage.style.display="block";
 }
 
