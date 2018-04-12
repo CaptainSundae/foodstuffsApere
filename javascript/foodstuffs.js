@@ -34,6 +34,10 @@ var addSize=document.getElementById('add');
 var minusSize=document.getElementById('minus');
 
 
+var scanPage=document.getElementById("scanPage");
+var printPage=document.getElementById("printPage");
+
+
 var errorPage=document.getElementById('errorPage');
 
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
@@ -368,6 +372,8 @@ function servingSettings(){
 
 function dietSettings(){
 	dietPage.style.display="none";
+
+	displayImage();
 	servingPageDisplay(); 
 
 }
@@ -380,7 +386,10 @@ function countReady(){
 	errorPage.style.display="none";
 	sendDataToHeath();
 	thirdPage.style.display="none";
-	firstPage.style.display="block";
+
+
+	printPage.style.display="inline-block";
+
 }
 
 //!!!!!!!!!!!BUG!!!!!!!!!! split second where nothing is showing, Not a big deal, kinda annoying.
@@ -405,9 +414,28 @@ function servingPageDisplay(){
 
 
 function resultsPage(){
-	displayImage();
 	thirdPage.style.display="block";
 }
+
+
+function printRecipe(){
+	setTimeout(scan(),1000);
+	setTimeout(quit, 3000);
+	}
+
+
+function scan(){
+	printPage.style.display="none";
+	scanPage.style.display="block";
+}
+
+function quit(){
+	printPage.style.display="none";
+	scanPage.style.display="none;"
+	firstPage.style.display="block";
+}
+
+
 
 function emoji(){
 	if (emotion=="Happiness"){

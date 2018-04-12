@@ -84,7 +84,7 @@
 	<button class="btnSettings" onclick="plusDivs(1)">&#10095;</button>  
 	</div>
 		 
-	 <button class="btnSettings" onclick="dietSettings()">GO</button>
+	 <button class="textHeads" id="startBtn" onclick="dietSettings()">GO</button>
 
   		<div id="instructions" class="row">
 			<img src="Images/logoLeft.png">
@@ -112,6 +112,35 @@
 			<img src="Images/logoRight.png">
 		</div>
 	</div>
+
+
+<div id="scanPage">
+	<h1 class="textHeads">Scan your club card for a chance to win a <b>$50 gift voucher</b>!</h1>
+</div>
+
+<div id="printPage">
+	<div class="row">
+		<div class="col-sm-3">
+			<button class="btnSettings" onclick="quit()">&#10094;</button>
+		</div>
+		
+		<div class="col-sm-6">
+			<h1 class="textHeads">Press right to print recipe and ingredients</h1>
+			<h1 class="textHeads">OR</h1>
+			<h1 class="textHeads">Press left to start again</h1>
+		</div>
+
+		<div class="col-sm-3">
+			<button class="btnSettings" onclick="printRecipe()">&#10095;</button>
+		</div>  
+	</div>
+	 
+	<div id="instructions" class="row">
+			<img src="Images/logoLeft.png">
+			<img src="Images/logoSelect.png">
+			<img src="Images/logoRight.png">
+	</div>
+</div>
 
 <div id="errorPage">
 	<h1 class="textHeads">Your Image was obscured, please try again.</h1>
