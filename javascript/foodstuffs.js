@@ -2,6 +2,8 @@ var weather="Default";
 var emotion="emoDefault";
 var emoDictionary=[];
 var diet="";
+var productDisplayName="";
+var familySize="";
 
 var video=document.getElementById('videoElement');
 var firstPage=document.getElementById('firstPage');
@@ -137,9 +139,6 @@ This function was taken from stackoverflow
    
 
 
-                var sentence = "Due to your " +emotion+" on this "+weather+" day. We think you'll enjoy this!";
-			    console.log(sentence);
-			    prodSentence.innerHTML=sentence;
 			    console.log('after prodSentence');
 
 			   /*
@@ -172,6 +171,8 @@ This function was taken from stackoverflow
 				}
 			*/
 //START HARD CODING RESULTS
+
+
 	var fiftyFifty=Math.floor(Math.random()*2);
 	prodNotes.innerHTML='For notes on how to make this recipe, please visit our website or follow the instructions on the printout below.';
 
@@ -180,9 +181,11 @@ This function was taken from stackoverflow
 		if(fiftyFifty==1){
 			prodImage.src="Images/recipe/ThaiMushroomSalad.jpg";
 			prodName.innerHTML='Thai Mushroom Salad';
+			productDisplayName='Thai Mushroom Salad';
 		}if(fiftyFifty==0){
 			prodImage.src="Images/recipe/MediterraneanPumpkinAndBasiCouscous.jpg"
 			prodName.innerHTML="Mediterranean Pumpkin & Basi Couscous"
+			productDisplayName='Mediterranean Pumpkin & Basi Couscou';
 		}
 		console.log(fiftyFifty);
 				}if(diet=="dairy"){
@@ -190,9 +193,11 @@ This function was taken from stackoverflow
 		if(fiftyFifty==1){
 			prodImage.src="Images/recipe/Soy&GingerSalmonWithLemon&HerbCouscous.jpg";
 			prodName.innerHTML='Soy & Ginger Salmon With Lemon & Herb Couscous';
+			productDisplayName='Soy & Ginger Salmon With Lemon & Herb Couscous';
 		}if(fiftyFifty==0){
-			prodImage.src="Images/recipe/Tofu&MushroomSanChoyBau.jpg"
-			prodName.innerHTML="Tofu & Mushroom San Choy Bau"
+			prodImage.src="Images/recipe/Tofu&MushroomSanChoyBau.jpg";
+			prodName.innerHTML="Tofu & Mushroom San Choy Bau";
+			productDisplayName="Tofu & Mushroom San Choy Bau";
 		}
 	}
 	if(diet=="noRequirements"){
@@ -200,9 +205,11 @@ This function was taken from stackoverflow
 			if(fiftyFifty==1){
 				prodImage.src="Images/recipe/TeriyakiChicken&CapsicumBowl.jpg";
 				prodName.innerHTML='Teriyaki Chicken & Capsicum Bowl';
+				productDisplayName='Teriyaki Chicken & Capsicum Bowl';
 			}if(fiftyFifty==0){
-				prodImage.src="Images/recipe/BeefSirloinOnSpicedLentils&Swede.jpg"
-				prodName.innerHTML="Beef Sirloin On Spiced Lentils & Swede"
+				prodImage.src="Images/recipe/BeefSirloinOnSpicedLentils&Swede.jpg";
+				prodName.innerHTML="Beef Sirloin On Spiced Lentils & Swede";
+				productDisplayName="Beef Sirloin On Spiced Lentils & Swede";
 			}
 		}
 
@@ -210,9 +217,11 @@ This function was taken from stackoverflow
 			if(fiftyFifty==1){
 				prodImage.src="Images/recipe/Beef&BeanQuesadillas.jpg";
 				prodName.innerHTML='Beef & Bean Quesadillas';
+				productDisplayName='Beef & Bean Quesadillas';
 			}if(fiftyFifty==0){
 				prodImage.src="Images/recipe/Ginger&CaramelSalmonwithAsianGreens.jpg"
 				prodName.innerHTML="Ginger & Caramel Salmon with Asian Greens"
+				productDisplayName="Ginger & Caramel Salmon with Asian Greens";
 			}
 		}
 
@@ -220,18 +229,22 @@ This function was taken from stackoverflow
 			if(fiftyFifty==1){
 				prodImage.src="Images/recipe/HarissaLambSkewers&TangyPotatoSalad.jpg";
 				prodName.innerHTML='Harissa Lamb Skewers & Tangy Potato Salad';
+				productDisplayName='Harissa Lamb Skewers & Tangy Potato Salad';
 			}if(fiftyFifty==0){
 				prodImage.src="Images/recipe/BBQChickenSkewers,KumaraWedges&Cos.jpg"
 				prodName.innerHTML="BBQ Chicken Skewers, Kumara Wedges & Cos"
+				productDisplayName="BBQ Chicken Skewers, Kumara Wedges & Cos";
 			}
 		}
 		if(emotion=="Surprise"){
 			if(fiftyFifty==1){
 				prodImage.src="Images/recipe/ChilliJamLamb&MintedBroccoli.jpg";
 				prodName.innerHTML='Chilli Jam Lamb & Minted Broccoli';
+				productDisplayName='Chilli Jam Lamb & Minted Broccoli';
 			}if(fiftyFifty==0){
 				prodImage.src="Images/recipe/GreekStylePorkFeta&TomatoBraise.jpg"
 				prodName.innerHTML="Greek Style Pork Feta & Tomato Braise"
+				productDisplayName="Greek Style Pork Feta & Tomato Braise";
 			}
 		}
 
@@ -239,13 +252,30 @@ This function was taken from stackoverflow
 			if(fiftyFifty==1){
 				prodImage.src="Images/recipe/Thyme&ParmesanSpaghettiBolognese.jpg";
 				prodName.innerHTML='Thyme & Parmesan Spaghetti Bolognese';
+				productDisplayName='Thyme & Parmesan Spaghetti Bolognese';
 			}if(fiftyFifty==0){
 				prodImage.src="Images/recipe/CreamyChicken&GreenMedley.jpg"
 				prodName.innerHTML="Creamy Chicken & Green Medley"
+				productDisplayName="Creamy Chicken & Green Medley";
 			}
 		}
 	}
-	
+				if(emotion=="Happiness"){
+					var sentence="On this beautiful sunny afternoon, you are feeling happy! Because of this we feel "+ productDisplayName+" would be wonderful to enjoy with your family of "+familySize+".";
+				}
+				if(emotion=='Sadness'){
+					sentence="It's a cold cloudy afternoon and you have come into New World for your groceries. You're looking a little down but with a dash of " + productDisplayName + " for tonight, the whole day gets a little bit lighter!"
+				}
+				if(emotion=="Surprise"){
+					sentence="We see you're feeling surprised, probably because this mysterious camera is attempting to understand the complexity of human emotion and  tell you how you feel. To soothe your shock, share this wonderful " +productDisplayName+ " with your beloved " +familySize+ " people.";
+
+				}
+				if(emotion=="Anger"){
+					sentence="Oh dear, you're feeling angry. Grocery shopping can be a stressful experience for sure. Let's help this anger, it is a lovely sunny morning after all. How about a lovely dish of "+ productDisplayName+ " so you don't have to worry about dinner and can focus on having a fantastic day."
+				}
+
+				console.log(sentence);
+			    prodSentence.innerHTML=sentence;
 
 
 
@@ -254,8 +284,7 @@ This function was taken from stackoverflow
 
 
 
-
-
+console.log(prodName);
 
 
 
@@ -514,6 +543,7 @@ function add(){
 	}
 
 	servingSize.innerHTML=servings;
+	familySize=servings;
 }
 function minus(){
 	if(servings<=1){
@@ -522,6 +552,7 @@ function minus(){
 		servings-=1;	
 	}
 	servingSize.innerHTML=servings;
+	familySize=servings;
 }
 
 
