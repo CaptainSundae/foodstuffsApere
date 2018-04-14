@@ -191,25 +191,26 @@ This function was taken from stackoverflow
 				}if(diet=="dairy"){
 
 		if(fiftyFifty==1){
-			prodImage.src="Images/recipe/Soy&GingerSalmonWithLemon&HerbCouscous.jpg";
-			prodName.innerHTML='Soy & Ginger Salmon With Lemon & Herb Couscous';
-			productDisplayName='Soy & Ginger Salmon With Lemon & Herb Couscous';
+				prodImage.src="Images/recipe/TeriyakiChicken&CapsicumBowl.jpg";
+				prodName.innerHTML='Teriyaki Chicken & Capsicum Bowl';
+				productDisplayName='Teriyaki Chicken & Capsicum Bowl';
 		}if(fiftyFifty==0){
-			prodImage.src="Images/recipe/Tofu&MushroomSanChoyBau.jpg";
-			prodName.innerHTML="Tofu & Mushroom San Choy Bau";
-			productDisplayName="Tofu & Mushroom San Choy Bau";
+				prodImage.src="Images/recipe/BeefSirloinOnSpicedLentils&Swede.jpg";
+				prodName.innerHTML="Beef Sirloin On Spiced Lentils & Swede";
+				productDisplayName="Beef Sirloin On Spiced Lentils & Swede";
 		}
 	}
 	if(diet=="noRequirements"){
 		if(emotion=="Happiness"){
 			if(fiftyFifty==1){
-				prodImage.src="Images/recipe/TeriyakiChicken&CapsicumBowl.jpg";
-				prodName.innerHTML='Teriyaki Chicken & Capsicum Bowl';
-				productDisplayName='Teriyaki Chicken & Capsicum Bowl';
+				prodImage.src="Images/recipe/Soy&GingerSalmonWithLemon&HerbCouscous.jpg";
+				prodName.innerHTML='Soy & Ginger Salmon With Lemon & Herb Couscous';
+				productDisplayName='Soy & Ginger Salmon With Lemon & Herb Couscous';
 			}if(fiftyFifty==0){
-				prodImage.src="Images/recipe/BeefSirloinOnSpicedLentils&Swede.jpg";
-				prodName.innerHTML="Beef Sirloin On Spiced Lentils & Swede";
-				productDisplayName="Beef Sirloin On Spiced Lentils & Swede";
+
+			prodImage.src="Images/recipe/Tofu&MushroomSanChoyBau.jpg";
+			prodName.innerHTML="Tofu & Mushroom San Choy Bau";
+			productDisplayName="Tofu & Mushroom San Choy Bau";
 			}
 		}
 
@@ -273,9 +274,9 @@ This function was taken from stackoverflow
 				if(emotion=="Anger"){
 					sentence="Oh dear, you're feeling angry. Grocery shopping can be a stressful experience for sure. Let's help this anger, it is a lovely sunny morning after all. How about a lovely dish of "+ productDisplayName+ " so you don't have to worry about dinner and can focus on having a fantastic day."
 				}
-
+				prodSentence.innerHTML="You are displaying "+emotion +" on this "+weather+" day.";
 				console.log(sentence);
-			    prodSentence.innerHTML=sentence;
+			    prodNotes.innerHTML=sentence;
 
 
 
